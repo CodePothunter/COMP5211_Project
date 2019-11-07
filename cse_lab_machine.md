@@ -4,7 +4,7 @@
 
 About the deparment computing resoruces, please refer to [for PG](https://cssystem.cse.ust.hk/UGuides/PG/hkust_only/intro.html) or [for UG](https://cssystem.cse.ust.hk/UGuides/UG/hkust_only/intro.html).
 
-We have deployed the BERT server on the CSD machine, you can login to `csl2wkxx` (xx is a number):
+We have deployed the BERT server on the CSD machine, you can login to `csl2wkxx` (xx is a number), e.g.,
 
 ```bash
 ssh yourID@csl2wk53.cse.ust.hk
@@ -35,6 +35,6 @@ array([[-0.0155578 , -0.23251502,  0.178801  , ..., -0.16294768,
 ```
 
 
-**Note, the `csl2wk` computers will restart at 7:00 am every day.** Due to the
-limited computing resources, BERT-server may get stuck if there are too many 
-queries simultaneously.
+**Note, the `csl2wk` computers will restart at 7:00 am every day.** The hard-device
+quota is very limited** (200MB) by the CSD**. Due to the limited computing resources, 
+BERT-server may get stuck if there are too many queries simultaneously.
