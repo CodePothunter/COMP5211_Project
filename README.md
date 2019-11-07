@@ -6,7 +6,11 @@ as how to install the environment, if you want to run on your own computer.
 
 [Installation Introduction](Bert-as-Service_Install.md)
 
-[How to Use BERT-as-Service](https://github.com/hanxiao/bert-as-service#book-tutorial)
+[General Using Guide of Bert-as-Service](https://github.com/hanxiao/bert-as-service#book-tutorial)
+
+You are highly recommanded to use your own computer. But you can also utilize the 
+machines provided by the CSE department. For instrution, please refer to 
+[How to Run on CSE Department Machine](cse_lab_machine.md)
 
 **Don't forget to register your group at [this link](http://bit.ly/comp5211group)**
 

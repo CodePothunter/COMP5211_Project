@@ -97,7 +97,7 @@ You may also refer to https://github.com/hanxiao/bert-as-service#install
 
 In this project, you are required to use `BERT-small-uncased` pretrained model, [link](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip). For fun, you may also download other pretrained models from [here](https://github.com/hanxiao/bert-as-service#1-download-a-pre-trained-bert-model).
 
-Download the pretrained model and unzip it to a directory, e.g. `uncased_L-12_H-768_A-12`
+Download the pretrained model and unzip it to a directory, e.g. `./uncased_L-12_H-768_A-12`
 
 ## Almost Done!
 
@@ -106,7 +106,7 @@ Download the pretrained model and unzip it to a directory, e.g. `uncased_L-12_H-
 First, start the server by  *(you should set `-num_worker=1`, unless you have installed a GPU version of TF and have more GPUs*).
 
 ```bash
-bert-serving-start -model_dir /tmp/english_L-12_H-768_A-12/ -num_worker=1
+bert-serving-start -model_dir ./uncased_L-12_H-768_A-12/ -num_worker=1 -cpu
 ```
 
 And open `python` in another terminal
@@ -119,7 +119,7 @@ bc.encode(['What a nice day', 'everyone gets an A'])
 
 Ideally, the output is
 
-```
+```python
 array([[-0.01555783, -0.2325154 ,  0.17880076, ..., -0.16294773,
          0.095397  , -0.09102419],
        [-0.25249135,  0.1036251 , -0.08484149, ..., -0.14833212,
