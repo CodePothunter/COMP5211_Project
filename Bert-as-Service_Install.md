@@ -1,4 +1,4 @@
-# BERT-as-service Installation Introudction
+# BERT-as-service Installation Instruction
 
 This introduction shows one of the most painless way to install and play with
 BERT. 
