@@ -10,7 +10,7 @@ as how to install the environment, if you want to run on your own computer.
 
 You are highly recommanded to use your own computer as there are too many constraints
 when using CSD machines. Eventhough you can also utilize the machines provided by the 
-CSE department. For instrution, please refer to 
+CSE department. For instruction, please refer to 
 [How to Run on CSE Department Machine](cse_lab_machine.md)
 
 **Don't forget to register your group at [this link](http://bit.ly/comp5211group)**
