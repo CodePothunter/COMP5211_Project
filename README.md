@@ -8,6 +8,8 @@ as how to install the environment, if you want to run on your own computer.
 
 [General Using Guide of Bert-as-Service](https://github.com/hanxiao/bert-as-service#book-tutorial)
 
+[A 2-minute Example](application.md)
+
 You are highly recommanded to use your own computer as there are too many constraints
 when using CSD machines. Eventhough you can also utilize the machines provided by the 
 CSE department. For instruction, please refer to 
