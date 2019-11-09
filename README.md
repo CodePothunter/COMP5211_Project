@@ -15,7 +15,7 @@ when using CSD machines. Eventhough you can also utilize the machines provided b
 CSE department. For instruction, please refer to 
 [How to Run on CSE Department Machine](cse_lab_machine.md)
 
-**Don't forget to register your group at [this link](http://bit.ly/comp5211group)**
+<!-- **Don't forget to register your group at [this link](http://bit.ly/comp5211group)** -->
 
 If you encounter any problem, please feel free to send me email, or **create an 
 issue (recommended, so that everyone can learn from it)**. The response time will be normally within two hours during 8:00-22:00.
