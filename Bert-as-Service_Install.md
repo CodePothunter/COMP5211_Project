@@ -58,7 +58,7 @@ conda create -n venv pip python=3.7  # select python version
 Activate the virtual environment:
 
 ```bash
-source activate venv
+conda activate venv
 ```
 
 Within the virtual environment, install the TensorFlow pip package (cpu-only, py3.7)
