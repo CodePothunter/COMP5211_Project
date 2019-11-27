@@ -106,7 +106,7 @@ Download the pretrained model and unzip it to a directory, e.g. `./uncased_L-12_
 First, start the server by  *(you should set `-num_worker=1`, unless you have installed a GPU version of TF and have more GPUs*).
 
 ```bash
-bert-serving-start -model_dir ./uncased_L-12_H-768_A-12/ -num_worker=1 -cpu
+bert-serving-start -model_dir ./uncased_L-12_H-768_A-12/ -num_worker=1 -cpu -pooling_strategy=NONE -show_tokens_to_client
 ```
 
 And open `python` in another terminal

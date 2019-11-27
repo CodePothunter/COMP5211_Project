@@ -29,8 +29,7 @@ bc = BertClient() # on your computer
 
 ```python
 keys = [qa[0] for qa in qa_pairs]
-key_vecs = bc.encode(keys)
-```
+key_vecs = bc.encode(keys)[:,0,:] # take [CLS] to represent the whole sentence```
 
 ## Define Search Function
 
@@ -39,7 +38,7 @@ def search_vec(query):
     def distance(a, b):
         import numpy as np
         return np.linalg.norm(a-b)
-    q_v = bc.encode(query)
+    q_v = bc.encode(query)[:,0,:]
     min_idx = -1
     min_dis = 1e100
     for i, k_v in enumerate(key_vecs):
