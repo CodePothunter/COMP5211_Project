@@ -23,13 +23,16 @@ qa_pairs = [line.split('|||') for line in lines]
 from bert_serving.client import BertClient
 bc = BertClient() # on your computer 
 # bc = BertClient(ip="lgpu1", port=10086, port_out=10087) # on CSD computer
+def mean_pooling(input):
+    cnt = np.sum(input!=0, axis=1)
+    return np.sum(input, axis=1) / cnt
 ```
 
 ## Encode Keys
 
 ```python
 keys = [qa[0] for qa in qa_pairs]
-key_vecs = bc.encode(keys)[:,0,:] # take [CLS] to represent the whole sentence```
+key_vecs = mean_pooling(bc.encode(keys))
 
 ## Define Search Function
 
@@ -38,7 +41,7 @@ def search_vec(query):
     def distance(a, b):
         import numpy as np
         return np.linalg.norm(a-b)
-    q_v = bc.encode(query)[:,0,:]
+    q_v = mean_pooling(bc.encode(query))
     min_idx = -1
     min_dis = 1e100
     for i, k_v in enumerate(key_vecs):
