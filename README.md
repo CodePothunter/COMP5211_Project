@@ -25,7 +25,7 @@ This page will keep updated for more tutorials and FAQ.
 
 **2019-11-27: [A 2-minute Example](application.md) and [Installation Introduction](Bert-as-Service_Install.md) updated**
 
-**2019-11-30: Updated [Q2](#how-to-do-pooling) how to corectly do pooling on the outputs**
+**2019-11-30: Updated [Q2](#how-to-do-pooling) how to corectly do pooling on the outputs, and [Run a simple test](#run-a-simple-test)**
 
 ## Q1: How to do `[MASK]` in the query?
 
