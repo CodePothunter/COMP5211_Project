@@ -25,6 +25,8 @@ This page will keep updated for more tutorials and FAQ.
 
 **2019-11-27: [A 2-minute Example](application.md) and [Installation Introduction](Bert-as-Service_Install.md) updated**
 
+**2019-11-30: Updated [Q2](#how-to-do-pooling?) how to corectly do pooling on the outputs**
+
 ## Q1: How to do `[MASK]` in the query?
 
 It can be achieved if you go through the [General Using Guide of Bert-as-Service](https://github.com/hanxiao/bert-as-service#book-tutorial) carefully. 
@@ -56,9 +58,9 @@ print(bc.encode(['hey you', 'whats up?'], show_tokens=True))
           0.4786739 , -0.48920187],
         ...,
         [ 0.        ,  0.        ,  0.        , ..., -0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [ 0.        ,  0.        ,  0.        , ..., -0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [-0.        ,  0.        ,  0.        , ..., -0.        ,
          -0.        ,  0.        ]],
 
@@ -70,7 +72,7 @@ print(bc.encode(['hey you', 'whats up?'], show_tokens=True))
           0.77894425, -0.59493685],
         ...,
         [ 0.        ,  0.        ,  0.        , ...,  0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [-0.        , -0.        ,  0.        , ..., -0.        ,
          -0.        , -0.        ],
         [ 0.        , -0.        ,  0.        , ...,  0.        ,
@@ -94,9 +96,9 @@ print(bc.encode(['hey you'.lower().split(), 'whats up?'.lower().split()],
           0.4786739 , -0.48920187],
         ...,
         [ 0.        ,  0.        ,  0.        , ..., -0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [ 0.        ,  0.        ,  0.        , ..., -0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [-0.        ,  0.        ,  0.        , ..., -0.        ,
          -0.        ,  0.        ]],
 
@@ -108,11 +110,11 @@ print(bc.encode(['hey you'.lower().split(), 'whats up?'.lower().split()],
          -0.34432426, -0.942693  ],
         ...,
         [ 0.        , -0.        , -0.        , ..., -0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [ 0.        , -0.        , -0.        , ..., -0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [ 0.        , -0.        , -0.        , ...,  0.        ,
-          0.        , -0.        ]]], dtype=float32), 
+          1.        , -0.        ]]], dtype=float32), 
 [['[CLS]', 'hey', 'you', '[SEP]'], ['[CLS]', '[UNK]', '[UNK]', '[SEP]']])
 ```
 
@@ -156,10 +158,24 @@ print(bc.encode([myTKNZ('hey [MASK]'), myTKNZ('whats [MASK] up?')],
         [ 0.        , -0.        ,  0.        , ...,  0.        ,
          -0.        , -0.        ],
         [ 0.        ,  0.        ,  0.        , ...,  0.        ,
-          0.        , -0.        ],
+          1.        , -0.        ],
         [-0.        ,  0.        , -0.        , ..., -0.        ,
          -0.        ,  0.        ]]], dtype=float32), 
 [['[CLS]', 'hey', '[MASK]', '[SEP]'], ['[CLS]', 'what', '##s', '[MASK]', 'up', '?', '[SEP]']])
 ```
 
 You, the clever students, are able to find a BERT tokenizer by yourselves!
+
+## How to do pooling?
+
+The outputs of our BERT service is in the form of `[batch_size, max_seq_len, 768]`,
+where the `max_seq_len` is the time axis. For doing pooling, the firt thing we 
+need to consider is the remove the influence of `[PAD]` outputs, i.e. zeros. 
+
+Therefore, a correct mean pooling function is:
+
+```python
+def mean_pooling(input):
+    cnt = np.sum(input!=0, axis=1) # count the nonzero elements along the time axis
+    return np.sum(input, axis=1) / cnt # do the real division by ignoring the padding output
+```

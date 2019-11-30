@@ -113,12 +113,26 @@ And open `python` in another terminal
 
 ```python
 from bert_serving.client import BertClient
+import numpy as np
+
+def mean_pooling(input):
+    cnt = np.sum(input!=0, axis=1)
+    return np.sum(input, axis=1) / cnt 
+
 bc = BertClient()
-bc.encode(['What a nice day', 'everyone gets an A'])
+mean_pooling(bc.encode(['What a nice day', 'everyone gets an A'])) 
+# we manully do the mean pooling, by using np.mean()
 ```
 
 Ideally, the output is
+```python
+array([[-0.01555783, -0.2325154 ,  0.17880076, ..., -0.16294773,
+         0.095397  , -0.09102419],
+       [-0.25249135,  0.1036251 , -0.08484149, ..., -0.14833212,
+         0.8393693 ,  0.509507  ]])
+```
 
+That's identical to the BERT-AS-SERVICE default mean pooling output:
 ```python
 array([[-0.01555783, -0.2325154 ,  0.17880076, ..., -0.16294773,
          0.095397  , -0.09102419],
